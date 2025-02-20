@@ -105,6 +105,3 @@ Go to: **[http://127.0.0.1:5000](http://127.0.0.1:5000)**
 
 🚀 **Aarogyam - AI for Smarter Healthcare!**  
 ```
-
-
-Just **replace "YourUsername"** with your actual GitHub username, and it's good to go! 🚀
