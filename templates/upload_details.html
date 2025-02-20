@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload User Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        nav {
+            background-color: #007bff;
+            padding: 10px 0;
+        }
+        .navbar {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .navbar li {
+            margin: 0 15px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .upload-form {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .flash-messages {
+            margin-bottom: 15px;
+        }
+        .flash-success {
+            color: green;
+        }
+        .flash-error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="navbar">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('diet') }}">Start Chat</a></li>
+            <li><a href="{{ url_for('hospital') }}">Hospital Info</a></li>
+            <li><a href="{{ url_for('heart_disease') }}">Predict Heart Disease</a></li>
+            <li><a href="{{ url_for('medical_reports') }}">Upload Medical Reports</a></li>
+            <li><a href="{{ url_for('liver_disease') }}">Liver Disease Prediction</a></li>
+            <li><a href="{{ url_for('diabetes') }}">Diabetes Prediction</a></li>
+            <li><a href="{{ url_for('knowledge_chat') }}">Knowledge Chatbot</a></li>
+        </ul>
+    </nav>
+    <h1>Upload User Details</h1>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+    <form class="upload-form" action="{{ url_for('upload_details') }}" method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="image">Upload Image with User Details:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+        </div>
+        <div>
+            <button type="submit">Upload and Extract Details</button>
+        </div>
+    </form>
+    
+    <p><a href="{{ url_for('index') }}">Back to Home</a></p>
+</body>
+</html>
